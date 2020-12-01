@@ -1,0 +1,12 @@
+{
+  "name": "node-adventofcode",
+  "version": "1.0.0",
+  "scripts": {
+    "start:day1": "node -r ts-node/register src/day1.ts"
+  },
+  "dependencies": {
+    "@types/node": "^14.14.10",
+    "typescript": "^4.1.2",
+    "ts-node": "^9.0.0"
+  }
+}
