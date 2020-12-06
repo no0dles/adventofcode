@@ -5,7 +5,8 @@
     "day1": "node -r ts-node/register src/day1.ts",
     "day2": "node -r ts-node/register src/day2.ts",
     "day3": "node -r ts-node/register src/day3.ts",
-    "day4": "node -r ts-node/register src/day4.ts"
+    "day4": "node -r ts-node/register src/day4.ts",
+    "day5": "node -r ts-node/register src/day5.ts"
   },
   "dependencies": {
     "@types/node": "^14.14.10",
