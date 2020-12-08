@@ -1,35 +1,39 @@
-import fs from 'fs';
-import path from 'path';
-
-function* nested(depth: number, items: number[]): Generator<{
-  sum: number,
-  multiply: number,
+function* nested(
+  depth: number,
+  items: number[]
+): Generator<{
+  sum: number
+  multiply: number
   items: number[]
 }> {
   for (let item of items) {
     if (depth === 0) {
-      yield {sum: item, multiply: item, items: [item]};
+      yield { sum: item, multiply: item, items: [item] }
     } else {
       for (let result of nested(depth - 1, items)) {
         if (result.items.indexOf(item) >= 0) {
-          continue;
+          continue
         }
-        yield {sum: result.sum + item, multiply: result.multiply * item, items: [...result.items, item]};
+        yield {
+          sum: result.sum + item,
+          multiply: result.multiply * item,
+          items: [...result.items, item],
+        }
       }
     }
   }
 }
 
-const content = fs.readFileSync(path.join(process.cwd(), 'assets/day1.txt'));
-const items = content.toString().split('\n').map(l => parseInt(l, 0));
-const target = 2020;
-const depths = [1, 2];
+const target = 2020
 
-for (const depth of depths) {
-  for (const result of nested(depth, items)) {
+export function solution(depth: number, value: number[]) {
+  for (const result of nested(depth, value)) {
     if (result.sum === target) {
-      console.log(`${result.items.join(' * ')} = ${result.items.reduce((res, i) => res * i, 1)}`);
-      break;
+      return result.items.reduce((res, i) => res * i, 1)
     }
   }
+}
+
+export function parse(content: string) {
+  return content.split('\n').map((l) => parseInt(l, 0))
 }

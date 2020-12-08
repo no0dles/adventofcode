@@ -2,15 +2,16 @@
   "name": "node-adventofcode",
   "version": "1.0.0",
   "scripts": {
-    "day1": "node -r ts-node/register src/day1.ts",
-    "day2": "node -r ts-node/register src/day2.ts",
-    "day3": "node -r ts-node/register src/day3.ts",
-    "day4": "node -r ts-node/register src/day4.ts",
-    "day5": "node -r ts-node/register src/day5.ts"
+    "prettier": "prettier -w src/**",
+    "test": "jest --coverage"
   },
-  "dependencies": {
-    "@types/node": "^14.14.10",
+  "devDependencies": {
     "typescript": "^4.1.2",
-    "ts-node": "^9.0.0"
+    "prettier": "^2.2.1",
+    "ts-node": "^9.0.0",
+    "@types/node": "^14.14.10",
+    "@types/jest": "^26.0.17",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.4.4"
   }
 }
