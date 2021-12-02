@@ -3,17 +3,15 @@ import assert from 'assert'
 const totalRows = 128
 const totalColumns = 8
 
-function binary(line: string, max: number, lowChar = 'F', highChar = 'B') {
+function binary(line: string, max: number, lowChar: string) {
   let low = 0,
     high = max - 1,
     half = max / 2
   for (let i = 0; i < line.length; i++) {
     if (line[i] === lowChar) {
       high -= half
-    } else if (line[i] === highChar) {
-      low += half
     } else {
-      throw new Error(`unknown char ${line[i]}`)
+      low += half
     }
     half /= 2
   }
@@ -28,8 +26,8 @@ export interface Seat {
 }
 
 function getSeat(line: string): Seat {
-  const row = binary(line.substr(0, 7), totalRows, 'F', 'B')
-  const column = binary(line.substr(7, 3), totalColumns, 'L', 'R')
+  const row = binary(line.substr(0, 7), totalRows, 'F')
+  const column = binary(line.substr(7, 3), totalColumns, 'L')
   return {
     row,
     column,

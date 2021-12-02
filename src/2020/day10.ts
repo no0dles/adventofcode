@@ -1,8 +1,11 @@
 export function parse(content: string) {
-  return content
+  const numbers = content
     .split('\n')
     .filter((s) => !!s)
     .map((l) => parseInt(l, 0))
+
+  const max = getTargetJolts(numbers)
+  return [0, ...numbers.sort((a, b) => a - b), max]
 }
 
 export function getTargetJolts(input: number[]) {
@@ -20,28 +23,31 @@ function countDistances(sortedInput: number[], distance: number): number {
 }
 
 export function solution1(input: number[]) {
-  const lastAdapter = getTargetJolts(input)
-  const sortedInput = [0, ...input.sort((a, b) => a - b), lastAdapter]
-  return countDistances(sortedInput, 1) * countDistances(sortedInput, 3)
+  return countDistances(input, 1) * countDistances(input, 3)
 }
 
 export function solution2(input: number[]) {
-  const sortedInput = input.sort((a, b) => a - b)
-  return countPermutation(sortedInput, 0)
+  return countPermutation(input, 0, {})
 }
 
-function countPermutation(sortedInput: number[], index: number): number {
+function countPermutation(
+  sortedInput: number[],
+  index: number,
+  cache: { [key: string]: number }
+): number {
   if (index + 1 === sortedInput.length) {
     return 1
+  }
+  if (cache[index]) {
+    return cache[index]
   }
 
   let count = 0
   for (let i = index + 1; i < sortedInput.length; i++) {
     if (sortedInput[i] - sortedInput[index] <= 3) {
-      count += countPermutation(sortedInput, i)
-    } else {
-      break
+      count += countPermutation(sortedInput, i, cache)
     }
   }
+  cache[index] = count
   return count
 }

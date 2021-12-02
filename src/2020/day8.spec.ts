@@ -1,7 +1,7 @@
 import { parse, repairInstructions, runProgram } from './day8'
-import { readInput } from './shared'
+import { readInput } from '../shared'
 
-describe('day8', () => {
+describe('2020/day8', () => {
   it('demo part 1', () => {
     const content =
       'nop +0\n' +
@@ -18,7 +18,7 @@ describe('day8', () => {
   })
 
   it('part 1', () => {
-    const content = readInput(8)
+    const content = readInput(2020, 8)
     const instructions = parse(content)
     expect(runProgram(instructions)).toBe(1814)
   })
@@ -40,7 +40,7 @@ describe('day8', () => {
   })
 
   it('part 2', () => {
-    const content = readInput(8)
+    const content = readInput(2020, 8)
     const instructions = parse(content)
     const fixedInstructions = repairInstructions(instructions)
     expect(runProgram(fixedInstructions)).toBe(1056)

@@ -1,8 +1,8 @@
-import { readInput } from './shared'
+import { readInput } from '../shared'
 import { parse, solution1, solution2 } from './day9'
 
-describe('day9', () => {
-  const data = parse(readInput(9))
+describe('2020/day9', () => {
+  const data = parse(readInput(2020, 9))
 
   it('demo 1', () => {
     const demo = parse(

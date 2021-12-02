@@ -1,8 +1,8 @@
 import { parse, solution1, solution2 } from './day10'
-import { readInput } from './shared'
+import { readInput } from '../shared'
 
-describe('day10', () => {
-  const data = parse(readInput(10))
+describe('2020/day10', () => {
+  const data = parse(readInput(2020, 10))
 
   it('demo 1', () => {
     const data = parse(
@@ -63,6 +63,6 @@ describe('day10', () => {
   })
 
   it('part 2', () => {
-    expect(solution2(data)).toBe(0)
+    expect(solution2(data)).toBe(113387824750592)
   })
 })

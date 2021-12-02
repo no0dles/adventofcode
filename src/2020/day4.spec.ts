@@ -1,8 +1,8 @@
 import { parse, solution1, solution2 } from './day4'
-import { readInput } from './shared'
+import { readInput } from '../shared'
 
-describe('day4', () => {
-  const input = parse(readInput(4))
+describe('2020/day4', () => {
+  const input = parse(readInput(2020, 4))
 
   it('part 1', () => {
     expect(solution1(input)).toBe(242)
