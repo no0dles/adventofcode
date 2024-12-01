@@ -3,16 +3,22 @@
   "version": "1.0.0",
   "scripts": {
     "prettier": "prettier -w src/**",
-    "test": "jest --coverage",
+    "test": "node --import tsx --test-reporter spec --test src/*/*.spec.ts",
+    "test:2024": "node --import tsx --test-reporter spec --test src/2024/*.spec.ts",
+    "test:2023": "node --import tsx --test-reporter spec --test src/2023/*.spec.ts",
+    "test:2021": "node --import tsx --test-reporter spec --test src/2021/*.spec.ts",
+    "test:2020": "node --import tsx --test-reporter spec --test src/2020/*.spec.ts",
     "build": "tsc -b"
   },
+  "engines": {
+    "node": ">=22"
+  },
+  "engineStrict": true,
+  "type": "module",
   "devDependencies": {
-    "typescript": "^5.3.2",
-    "prettier": "^3.1.0",
-    "ts-node": "^10.9.1",
-    "@types/node": "^20.10.2",
-    "@types/jest": "^29.5.10",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.1"
+    "typescript": "^5.7.2",
+    "prettier": "^3.4.1",
+    "@types/node": "^22.10.1",
+    "tsx": "^4.19.2"
   }
 }

@@ -1,24 +1,28 @@
 export function parse(content: string) {
-  return content.split('\n').filter(l => !!l)
+  return content.split('\n').filter((l) => !!l)
 }
 
 export function solution1(lines: string[]): number {
   return lines.reduce((sum, line) => {
-   const result = line.match(/\d/g)
-    return sum + parseInt(result[0] + result[result.length-1])
-  }, 0);
+    const result = line.match(/\d/g)
+    return sum + parseInt(result[0] + result[result.length - 1])
+  }, 0)
 }
 
 export function solution2(lines: string[]): number {
   return lines.reduce((sum, line) => {
     return sum + parseLineForPart2(line)
-  }, 0);
+  }, 0)
 }
 
 export function parseLineForPart2(line: string) {
-  const result = Array.from(line.matchAll(/(?=(\d|one|two|three|four|five|six|seven|eight|nine))/g))
-    .map(v => v.filter(v => !!v));
-  return parseInt(mapValue(result[0][0]) + mapValue(result[result.length-1][result[result.length-1].length-1]))
+  const result = Array.from(
+    line.matchAll(/(?=(\d|one|two|three|four|five|six|seven|eight|nine))/g)
+  ).map((v) => v.filter((v) => !!v))
+  return parseInt(
+    mapValue(result[0][0]) +
+      mapValue(result[result.length - 1][result[result.length - 1].length - 1])
+  )
 }
 
 function mapValue(value: string): string {

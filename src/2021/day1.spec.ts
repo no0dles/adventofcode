@@ -1,5 +1,7 @@
-import { parse, solution1, solution2 } from './day1'
-import { readInput } from '../shared'
+import { describe, it } from 'node:test'
+import { equal } from 'node:assert'
+import { parse, solution1, solution2 } from './day1.js'
+import { readInput } from '../shared.js'
 
 describe('2021/day1', () => {
   const content = readInput(2021, 1)
@@ -18,7 +20,7 @@ describe('2021/day1', () => {
         '263'
     )
     const result = solution1(demo)
-    expect(result).toBe(7)
+    equal(result, 7)
   })
 
   it('demo 2', () => {
@@ -35,13 +37,13 @@ describe('2021/day1', () => {
         '263'
     )
     const result = solution2(demo)
-    expect(result).toBe(5)
+    equal(result, 5)
   })
 
   it('part 1', () => {
-    expect(solution1(parse(content))).toBe(1722)
+    equal(solution1(parse(content)), 1722)
   })
   it('part 2', () => {
-    expect(solution2(parse(content))).toBe(1748)
+    equal(solution2(parse(content)), 1748)
   })
 })

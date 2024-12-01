@@ -1,61 +1,60 @@
-
 interface Position {
-  x: number;
-  y: number;
+  x: number
+  y: number
 }
 
 interface ParsedLine {
-  source: Position;
-  target: Position;
+  source: Position
+  target: Position
 }
 
 function parsePosition(position: string): Position {
-  const parts = position.split(',');
+  const parts = position.split(',')
   return {
     x: parseInt(parts[0]),
     y: parseInt(parts[1]),
-  };
+  }
 }
 
 export function parse(line: string): ParsedLine {
-  const parts = line.split(' -> ');
+  const parts = line.split(' -> ')
   return {
     source: parsePosition(parts[0]),
     target: parsePosition(parts[1]),
-  };
+  }
 }
 
 interface DirectionIterator {
-  next(): boolean;
+  next(): boolean
 
-  value(): number;
+  value(): number
 }
 
 function getIterator(source: number, target: number): DirectionIterator {
-  let value = source;
+  let value = source
   if (source < target) {
     return {
       value: () => value,
       next(): boolean {
-        value++;
-        return value <= target;
+        value++
+        return value <= target
       },
-    };
+    }
   } else {
     return {
       value: () => value,
       next(): boolean {
-        value--;
-        return value >= target;
+        value--
+        return value >= target
       },
-    };
+    }
   }
 }
 
 export function* solution(line: ParsedLine): Generator<[number, number]> {
-  const xIterator = getIterator(line.source.x, line.target.x);
-  const yIterator = getIterator(line.source.y, line.target.y);
+  const xIterator = getIterator(line.source.x, line.target.x)
+  const yIterator = getIterator(line.source.y, line.target.y)
   do {
-    yield [xIterator.value(), yIterator.value()];
-  } while (xIterator.next() && yIterator.next());
+    yield [xIterator.value(), yIterator.value()]
+  } while (xIterator.next() && yIterator.next())
 }

@@ -1,5 +1,7 @@
-import { parse, repairInstructions, runProgram } from './day8'
-import { readInput } from '../shared'
+import { describe, it } from 'node:test'
+import { equal } from 'node:assert'
+import { parse, repairInstructions, runProgram } from './day8.js'
+import { readInput } from '../shared.js'
 
 describe('2020/day8', () => {
   it('demo part 1', () => {
@@ -14,13 +16,13 @@ describe('2020/day8', () => {
       'jmp -4\n' +
       'acc +6'
     const instructions = parse(content)
-    expect(runProgram(instructions)).toBe(5)
+    equal(runProgram(instructions), 5)
   })
 
   it('part 1', () => {
     const content = readInput(2020, 8)
     const instructions = parse(content)
-    expect(runProgram(instructions)).toBe(1814)
+    equal(runProgram(instructions), 1814)
   })
 
   it('demo part 2', () => {
@@ -36,13 +38,13 @@ describe('2020/day8', () => {
       'acc +6'
     const instructions = parse(content)
     const fixedInstructions = repairInstructions(instructions)
-    expect(runProgram(fixedInstructions)).toBe(8)
+    equal(runProgram(fixedInstructions), 8)
   })
 
   it('part 2', () => {
     const content = readInput(2020, 8)
     const instructions = parse(content)
     const fixedInstructions = repairInstructions(instructions)
-    expect(runProgram(fixedInstructions)).toBe(1056)
+    equal(runProgram(fixedInstructions), 1056)
   })
 })

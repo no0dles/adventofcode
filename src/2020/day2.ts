@@ -11,9 +11,10 @@ export function parse(content: string): PasswordRule[] {
     .split('\n')
     .filter((s) => !!s)
     .map((l) => {
-      const match = /(?<num1>\d+)\-(?<num2>\d+) (?<character>[a-z]): (?<password>[a-z]+)/.exec(
-        l
-      )
+      const match =
+        /(?<num1>\d+)\-(?<num2>\d+) (?<character>[a-z]): (?<password>[a-z]+)/.exec(
+          l
+        )
       return {
         num1: parseInt(match.groups.num1, 0),
         num2: parseInt(match.groups.num2, 0),
