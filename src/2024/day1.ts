@@ -1,3 +1,4 @@
+
 export function parse(text: string) {
   return text
     .split('\n')
